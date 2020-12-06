@@ -1,10 +1,14 @@
 package pl.sda.spring.musicscorer.application.album;
 
-import lombok.Value;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@Value
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class AlbumsResponse {
     List<SingleAlbumResponse> albums;
 
