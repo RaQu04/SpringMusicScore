@@ -1,4 +1,4 @@
-package pl.sda.spring.musicscorer.application;
+package pl.sda.spring.musicscorer.application.score;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ScoreRestController {
 
     @PostMapping("/scores")
-    public ResponseEntity<Void> scoreAlbum(@RequestBody ScoreRequest scoreRequest){
-        System.out.println(scoreRequest);
+    public ResponseEntity<Void> score(@RequestBody ScoreRequest scoreRequest){
         return null;
     }
 }

@@ -1,4 +1,4 @@
-package pl.sda.spring.musicscorer.application;
+package pl.sda.spring.musicscorer.application.album;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
