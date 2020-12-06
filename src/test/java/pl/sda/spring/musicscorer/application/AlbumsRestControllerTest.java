@@ -1,7 +1,10 @@
 package pl.sda.spring.musicscorer.application;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -24,6 +27,11 @@ class AlbumsRestControllerTest {
     @Autowired
     private TestRestTemplate testRestTemplate;
 
+    @BeforeEach
+    void clearRepo() {
+        albumRepository.deleteAll();
+    }
+
     @Test
     void should_get_album() {
         //given
@@ -42,7 +50,12 @@ class AlbumsRestControllerTest {
         Assertions.assertThat(albumResponse.getBody().getTitle()).isEqualTo("ten");
     }
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "/albums?title=awake&artist=godsmack",
+            "/albums?title=awake",
+            "/albums?artist=godsmack"
+    })
     void should_get_albums_by_title_and_artist() {
         //given
         final AlbumEntity albumEntity1
